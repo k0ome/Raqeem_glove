@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raqeem Glove | القفاز الذكي</title>
+  <meta name="description" content="موقع تعريفي لمشروع Raqeem Glove - القفاز الذكي الذي يرسل إشارات اليد إلى الهاتف ليعرض الكلمات وينطقها صوتياً." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="top-pattern" aria-hidden="true">𒀭 𒆠 𒁹 𒂍 𒊕 𒀀 𒈗 𒋾 𒆪 𒁀</div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Raqeem Glove home">
+      <span class="brand-mark">𒊹</span>
+      <span>
+        <strong>Raqeem Glove</strong>
+        <small>القفاز الذكي</small>
+      </span>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
+
+    <nav class="nav" id="navMenu">
+      <a href="#summary">الملخص</a>
+      <a href="#details">التفاصيل</a>
+      <a href="#hardware">المكونات</a>
+      <a href="#phone-output">الهاتف</a>
+      <a href="#workflow">طريقة العمل</a>
+      <a href="#team">الفريق</a>
+    </nav>
+
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Change language">English</button>
+  </header>
+
+  <main id="home">
+    <section class="hero section">
+      <div class="hero-content reveal">
+        <p class="eyebrow">مشروع عراقي بتصميم مستوحى من سومر وبابل</p>
+        <h1>القفاز الذكي لترجمة إشارات اليد إلى كلمات ونطق من الهاتف</h1>
+        <p class="hero-text">
+          Raqeem Glove هو قفاز ذكي يستخدم حساسات المرونة ووحدة ESP32 لقراءة حركة الأصابع،
+          ثم يرسل نتيجة الإشارة عبر Bluetooth إلى تطبيق الهاتف. الهاتف يعرض الكلمة العربية
+          وينطقها صوتياً باستخدام Text To Speech، بدون DFPlayer أو ذاكرة SD.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#details">استكشف المشروع</a>
+          <a class="btn ghost" href="#hardware">المكونات التقنية</a>
+        </div>
+
+        <div class="stats">
+          <article>
+            <strong>5</strong>
+            <span>حساسات مرونة</span>
+          </article>
+          <article>
+            <strong>ESP32</strong>
+            <span>المعالجة والاتصال</span>
+          </article>
+          <article>
+            <strong>Phone TTS</strong>
+            <span>النطق من الهاتف</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="sun-disc"></div>
+        <div class="tablet-card">
+          <div class="ziggurat" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          
+          <img
+            class="new-hand-image"
+            src="assets/raqeem_glove_new_hand.png"
+            alt="صورة القفاز الذكي Raqeem Glove بتصميم مستوحى من حضارة العراق القديم"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section clay-section" id="summary">
+      <div class="section-title reveal">
+        <p class="eyebrow">ملخص المشروع</p>
+        <h2>فكرة القفاز باختصار</h2>
+      </div>
+
+      <div class="summary-grid">
+        <article class="clay-card reveal">
+          <span class="icon">𒁹</span>
+          <h3>المشكلة</h3>
+          <p>
+            كثير من الإشارات اليدوية لا تُفهم بسهولة من الأشخاص غير المتمرسين بلغة الإشارة،
+            لذلك يحتاج المستخدم إلى وسيط تقني يحول الحركة إلى كلمة مسموعة أو مقروءة.
+          </p>
+        </article>
+
+        <article class="clay-card reveal">
+          <span class="icon">𒂍</span>
+          <h3>الحل</h3>
+          <p>
+            قفاز مزود بحساسات مرونة على الأصابع يقرأ درجة الانحناء، ثم يعالج ESP32 القيم
+            ويتعرف على الإشارة، وبعدها يرسل كود الكلمة إلى الهاتف عبر Bluetooth.
+          </p>
+        </article>
+
+        <article class="clay-card reveal">
+          <span class="icon">𒈗</span>
+          <h3>النتيجة</h3>
+          <p>
+            عند تنفيذ حركة معيّنة تظهر الكلمة في تطبيق الهاتف وتُنطق صوتياً من الهاتف، مما يجعل التواصل
+            أسرع وأكثر وضوحاً.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split" id="details">
+      <div class="reveal">
+        <p class="eyebrow">تفاصيل القفاز</p>
+        <h2>ما الذي يفعله Raqeem Glove؟</h2>
+        <p>
+          يعتمد القفاز على قراءة وضعية الأصابع الخمسة. كل حساس مرونة يعطي قيمة رقمية تختلف عند
+          فرد الإصبع أو ثنيه. بعد المعايرة، يتم تحويل هذه القيم إلى نسب أو حالات مثل:
+          مستقيم، نصف انحناء، أو منحنٍ. بعد ذلك تتم مطابقة الحركة داخل ESP32، ثم يرسل المتحكم
+          كوداً ثابتاً إلى تطبيق الهاتف مثل HELLO أو YES أو HELP ليحوّله التطبيق إلى كلمة عربية وصوت.
+        </p>
+
+        <div class="feature-list">
+          <div>
+            <strong>قراءة الأصابع</strong>
+            <span>قياس انحناء الإبهام، السبابة، الوسطى، البنصر، والخنصر.</span>
+          </div>
+          <div>
+            <strong>تحليل الحركة</strong>
+            <span>استخدام حدود معايرة لتحديد حالة كل إصبع.</span>
+          </div>
+          <div>
+            <strong>الإرسال للهاتف</strong>
+            <span>إرسال كود الإشارة عبر Bluetooth إلى تطبيق الهاتف.</span>
+          </div>
+          <div>
+            <strong>النطق من الهاتف</strong>
+            <span>التطبيق يعرض الكلمة العربية وينطقها باستخدام Text To Speech.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tablet-info reveal">
+        <h3>أمثلة كلمات يمكن دعمها</h3>
+        <div class="word-cloud">
+          <span>مرحبا</span>
+          <span>أحبك</span>
+          <span>لا</span>
+          <span>موافق</span>
+          <span>أنت</span>
+          <span>سؤال</span>
+          <span>هذا ممتاز</span>
+          <span>عمل جيد</span>
+          <span>لست متأكد</span>
+          <span>أراك لاحقاً</span>
+          <span>هذا رهيب</span>
+          <span>أتمنى لك حياة سعيدة</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="hardware">
+      <div class="section-title reveal">
+        <p class="eyebrow">الجانب التقني</p>
+        <h2>المكونات والتوصيلات</h2>
+      </div>
+
+      <div class="hardware-grid">
+        <article class="tech-card reveal">
+          <h3>وحدة التحكم</h3>
+          <p>ESP32 لقراءة الحساسات، معالجة القيم، ثم إرسال كود الإشارة للهاتف.</p>
+        </article>
+        <article class="tech-card reveal">
+          <h3>حساسات المرونة</h3>
+          <p>خمسة Flex Sensors مثبتة على الأصابع الخمسة لقياس درجة الانحناء.</p>
+        </article>
+        <article class="tech-card reveal">
+          <h3>تطبيق الهاتف والصوت</h3>
+          <p>النطق الصوتي يتم داخل الهاتف باستخدام Text To Speech بعد وصول الكود من القفاز.</p>
+        </article>
+        <article class="tech-card reveal">
+          <h3>Bluetooth Classic</h3>
+          <p>الاتصال بين ESP32 والهاتف يتم عبر Bluetooth لإرسال رموز ثابتة وسهلة القراءة.</p>
+        </article>
+      </div>
+
+      <div class="components-image-showcase reveal" aria-label="صورة مكونات قفاز رقيم">
+        <img
+          class="components-overview-image"
+          src="assets/raqeem_components_overview.png"
+          alt="مكونات قفاز رقيم: ESP32، الفلكس سنسر، الجيروسكوب، البطارية، وزر التشغيل"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+
+    <section class="section phone-flow" id="phone-output">
+      <div class="section-title reveal">
+        <p class="eyebrow">المسار الحالي</p>
+        <h2>القفاز يرسل، والهاتف يعرض وينطق</h2>
+      </div>
+
+      <div class="phone-flow-grid">
+        <article class="flow-card reveal">
+          <span>01</span>
+          <h3>قراءة الأصابع</h3>
+          <p>حساسات Flex ترسل قيم الانحناء إلى ESP32.</p>
+        </article>
+        <article class="flow-card reveal">
+          <span>02</span>
+          <h3>تعرف الإشارة</h3>
+          <p>ESP32 يقارن القيم بالمعايرة ويحدد الإشارة المناسبة.</p>
+        </article>
+        <article class="flow-card reveal">
+          <span>03</span>
+          <h3>إرسال للهاتف</h3>
+          <p>يرسل ESP32 كوداً ثابتاً عبر Bluetooth Classic إلى تطبيق Android.</p>
+        </article>
+        <article class="flow-card reveal">
+          <span>04</span>
+          <h3>عرض ونطق</h3>
+          <p>التطبيق يحول الكود إلى كلمة عربية، يعرضها على الشاشة، وينطقها من الهاتف.</p>
+        </article>
+      </div>
+
+      <div class="phone-note reveal">
+        
+      </div>
+    </section>
+
+    <section class="section workflow" id="workflow">
+      <div class="section-title reveal">
+        <p class="eyebrow">آلية العمل</p>
+        <h2>من حركة الإصبع إلى صوت من الهاتف</h2>
+      </div>
+
+      <div class="steps">
+        <article class="step reveal">
+          <span>01</span>
+          <h3>حركة اليد</h3>
+          <p>المستخدم ينفذ إشارة معينة بأصابعه.</p>
+        </article>
+        <article class="step reveal">
+          <span>02</span>
+          <h3>قراءة الحساسات</h3>
+          <p>كل حساس مرونة يرسل قيمة analog إلى ESP32.</p>
+        </article>
+        <article class="step reveal">
+          <span>03</span>
+          <h3>المعالجة</h3>
+          <p>البرنامج يقارن القيم بحدود المعايرة ويتعرف على الإشارة.</p>
+        </article>
+        <article class="step reveal">
+          <span>04</span>
+          <h3>الإرسال والنطق</h3>
+          <p>الكود يُرسل للهاتف، ثم يحوّله التطبيق إلى كلمة عربية وينطقها صوتياً.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split" id="design-notes">
+      <div class="tablet-info reveal">
+        <h3>هوية التصميم</h3>
+        <p>
+          يعتمد الشكل البصري على ألوان الجلد الداكن، النحاس، الذهب، الطين المحروق، والزخارف المسمارية.
+          الهدف هو الجمع بين تقنية حديثة وروح حضارة العراق القديم، ليظهر القفاز كأداة مستقبلية تحمل
+          هوية محلية واضحة.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <p class="eyebrow">ملاحظات تطوير مهمة</p>
+        <h2>ما الذي يحتاجه النموذج ليصبح أكثر ثباتاً؟</h2>
+        <ul class="clean-list">
+          <li>تثبيت الحساسات جيداً على قفاز فعلي حتى لا تتغير القراءات أثناء الحركة.</li>
+          <li>إعادة المعايرة بعد التركيب النهائي لأن وضع الحساس يتغير من تجربة إلى أخرى.</li>
+          <li>فصل أسلاك الطاقة والإشارة وتنظيمها لتقليل التشابك والقراءات غير المستقرة.</li>
+          <li>اختبار كل إشارة عدة مرات قبل اعتمادها داخل البرنامج النهائي.</li>
+          <li>اختبار اتصال Bluetooth مع تطبيق الهاتف والتأكد من أن النطق يتم من الهاتف فقط.</li>
+        </ul>
+      </div>
+    </section>
+
+   <section class="section team" id="team">
+  <div class="section-title reveal">
+    <p class="eyebrow">فريق المشروع</p>
+    <h2>الأدوار المقترحة</h2>
+  </div>
+
+  <div class="team-grid">
+    <article class="team-card reveal">
+      <strong>أكرم فؤاد أكرم</strong>
+      <span>قائد الفريق ومطور الذكاء الاصطناعي</span>
+    </article>
+    <article class="team-card reveal">
+      <strong>مصطفى أحمد إبراهيم</strong>
+      <span>مطور الهاردوير</span>
+    </article>
+    <article class="team-card reveal">
+      <strong>عباس حسين عباس</strong>
+      <span>مبرمج المشروع ومطور البرمجيات</span>
+    </article>
+    <article class="team-card reveal">
+      <strong>زينب سعود سلمان</strong>
+      <span>مصممة المشروع</span>
+    </article>
+  </div>
+</section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>Raqeem Glove | القفاز الذكي</strong>
+      <p>تقنية حديثة بهوية عراقية قديمة.</p>
+    </div>
+    <a href="#home" class="back-top">العودة للأعلى ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
